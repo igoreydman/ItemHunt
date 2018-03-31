@@ -87,11 +87,11 @@
 		780EC88F206E5A9000AFB855 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				780EC886206E59AD00AFB855 /* Info.plist */,
 				780EC87A206E59AD00AFB855 /* AppDelegate.swift */,
 				780EC87E206E59AD00AFB855 /* Main.storyboard */,
 				780EC881206E59AD00AFB855 /* Assets.xcassets */,
 				780EC883206E59AD00AFB855 /* LaunchScreen.storyboard */,
-				780EC886206E59AD00AFB855 /* Info.plist */,
 			);
 			path = SupportFiles;
 			sourceTree = "<group>";
@@ -308,7 +308,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LWKW9DV6CV;
-				INFOPLIST_FILE = ItemHunt/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ItemHunt/SupportFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.IgorEydman.ItemHunt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -323,7 +323,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LWKW9DV6CV;
-				INFOPLIST_FILE = ItemHunt/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/ItemHunt/SupportFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.IgorEydman.ItemHunt;
 				PRODUCT_NAME = "$(TARGET_NAME)";

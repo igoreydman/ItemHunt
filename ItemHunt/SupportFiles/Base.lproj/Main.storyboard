@@ -17,12 +17,50 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="78k-Xq-pGT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lVh-XP-WBB">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="374" id="JJI-mu-btj"/>
+                                    <constraint firstAttribute="bottom" secondItem="lVh-XP-WBB" secondAttribute="bottom" id="QZU-sV-1Qo"/>
+                                    <constraint firstItem="lVh-XP-WBB" firstAttribute="leading" secondItem="78k-Xq-pGT" secondAttribute="leading" id="U6L-br-meT"/>
+                                    <constraint firstAttribute="trailing" secondItem="lVh-XP-WBB" secondAttribute="trailing" id="mPl-tm-TCQ"/>
+                                    <constraint firstItem="lVh-XP-WBB" firstAttribute="top" secondItem="78k-Xq-pGT" secondAttribute="top" id="qfV-eF-dEg"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FV9-aH-V2p">
+                                <rect key="frame" x="124" y="609" width="115" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Camera">
+                                    <color key="titleColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="CameraTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8gd-fO-EWw"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="78k-Xq-pGT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1jW-8q-y6q"/>
+                            <constraint firstItem="78k-Xq-pGT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8Yy-vS-Vtf"/>
+                            <constraint firstItem="78k-Xq-pGT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dQm-Pc-1hb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="cameraImage" destination="lVh-XP-WBB" id="QLf-WT-Quw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="24.800000000000001" y="31.934032983508249"/>
         </scene>
     </scenes>
 </document>
