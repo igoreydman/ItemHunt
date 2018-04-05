@@ -14,29 +14,117 @@ class ItemHuntVC: UIViewController {
     
     @IBOutlet weak var cameraImage: UIImageView!
     @IBOutlet weak var classificationLabel: UILabel!
+    @IBOutlet weak var nextBtnLabel: UIButton!
+    @IBOutlet weak var prevBtnLabel: UIButton!
+    @IBOutlet weak var findNextLabel: UILabel!
     
     let imagePicker = UIImagePickerController()
+    var itemEmojis = [Item]()
+    
+    var currentIndex = 0
+    var nextItem = Int()
+    var previousItem = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imagePicker.delegate = self
+        prevBtnLabel.isEnabled = false
+        generateItems()
+        let firstString = itemEmojis[currentIndex].emoji
+        findNextLabel.text = "Find a \(firstString)"
         
     }
     
-    @IBAction func CameraTapped(_ sender: Any) {
-        
+    @IBAction func cameraTapped(_ sender: Any) {
         imagePicker.sourceType = .camera
         imagePicker.cameraCaptureMode = .photo
         self.present(imagePicker, animated: true, completion: nil)
     }
     
-    func classifyImage(image: CIImage) {
+    @IBAction func nextTapped(_ sender: Any) {
+        updateItemLabels()
+    }
+    
+    @IBAction func prevTapped(_ sender: Any) {
+        currentIndex = previousItem
+        nextItem = Int(arc4random_uniform(UInt32(itemEmojis.count)))
+        prevBtnLabel.isEnabled = false
+    }
+    
+}
+
+// MARK - Item functions
+extension ItemHuntVC {
+    func generateItems() {
+        let itemDict = [
+            "apple":    "🍎",
+            "hotdog":   "🌭",
+            "orange":   "🍊",
+            "pizza":    "🍕"
+        ]
+    
+        for (itemName, emoji) in itemDict {
+            let newItem = Item(name: itemName, emoji: emoji)
+            itemEmojis.append(newItem)
+            itemEmojis = itemEmojis.sorted(by: {$0.name < $1.name})
+            print(itemEmojis[0].name)
+        }
+    }
+    
+    func updateItemLabels() {
+        if itemEmojis.isEmpty == false {
+            DispatchQueue.main.async {
+                self.previousItem = self.currentIndex
+                print("Current index is: \(self.currentIndex)")
+            // can this be condensed into if let?
+                if self.currentIndex + 1 > self.itemEmojis.count {
+                    self.currentIndex = 0
+                    print("Current index is: \(self.currentIndex)")
+            } else {
+                    self.currentIndex += 1
+                    print("Current index is: \(self.currentIndex)")
+            }
+            
+                self.nextItem = Int(arc4random_uniform(UInt32(self.itemEmojis.count)))
+            }
+        }
         
-        classificationLabel.text = "detecting object..."
+        let currentText = itemEmojis[currentIndex].emoji
+        let nextText = itemEmojis[nextItem].emoji
+        
+        findNextLabel.text = "Find a \(currentText)"
+        nextBtnLabel.titleLabel!.text = "\(nextText)"
+    }
+    
+    func checkModelResult(modelIdentifier: String) {
+        // Search for item.name in model identifier
+        var resultLowecased = modelIdentifier.lowercased()
+        
+        // TODO - Train model to identify apples
+        if resultLowecased.range(of: "granny smith") != nil {
+            resultLowecased = "apple"
+            print("result: \(resultLowecased) \nEmoji: \(itemEmojis[currentIndex].emoji)")
+        }
+        
+        if resultLowecased.range(of: itemEmojis[currentIndex].name) != nil {
+            DispatchQueue.main.async {
+                self.prevBtnLabel.isEnabled = true
+                let emojiName = self.itemEmojis[self.currentIndex].name.capitalized
+                self.classificationLabel.text = "\(emojiName) FOUND"
+                self.updateItemLabels()
+            }
+        }
+    }
+}
+
+// MARK - CoreML
+extension ItemHuntVC {
+    func classifyImage(image: CIImage) {
+        classificationLabel.text = "Detecting object..."
         
         // Load the ML model through generated class
-        guard let model = try? VNCoreMLModel(for: SqueezeNet().model) else {
+        guard let model = try? VNCoreMLModel(for: Inceptionv3().model) else {
             fatalError("can't load ML model")
         }
         
@@ -50,6 +138,9 @@ class ItemHuntVC: UIViewController {
             // Update UI
             DispatchQueue.main.async { [weak self] in
                 self?.classificationLabel.text = "\(Int(topResult.confidence * 100))% \(topResult.identifier) detected"
+                
+                // Check if item is a match
+                self!.checkModelResult(modelIdentifier: topResult.identifier)
             }
         }
         
@@ -63,9 +154,9 @@ class ItemHuntVC: UIViewController {
             }
         }
     }
-    
 }
 
+// MARK - Camera
 extension ItemHuntVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
