@@ -21,7 +21,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="78k-Xq-pGT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lVh-XP-WBB">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lVh-XP-WBB">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </imageView>
@@ -70,9 +70,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qq1-kI-9zi">
                                 <rect key="frame" x="16" y="609" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Previous"/>
+                                <state key="normal" title="Random"/>
                                 <connections>
-                                    <action selector="prevTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lwx-GN-SLG"/>
+                                    <action selector="randomTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nzN-eo-VPu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -89,7 +89,7 @@
                         <outlet property="classificationLabel" destination="Geg-fk-wfz" id="n2D-J7-l2U"/>
                         <outlet property="findNextLabel" destination="QSa-D9-3TG" id="nJg-Np-ECB"/>
                         <outlet property="nextBtnLabel" destination="wfi-iF-axe" id="Dsf-y9-W7U"/>
-                        <outlet property="prevBtnLabel" destination="Qq1-kI-9zi" id="jf9-dw-VI4"/>
+                        <outlet property="randomBtnLabel" destination="Qq1-kI-9zi" id="ve7-MH-cUp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

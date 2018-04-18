@@ -13,7 +13,7 @@
 		780EC885206E59AD00AFB855 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 780EC883206E59AD00AFB855 /* LaunchScreen.storyboard */; };
 		780EC893206E5FB000AFB855 /* ItemHuntVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780EC892206E5FB000AFB855 /* ItemHuntVC.swift */; };
 		780EC8A5206FE4EC00AFB855 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780EC8A4206FE4EC00AFB855 /* Item.swift */; };
-		780EC8AE20727F6500AFB855 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 780EC8AD20727F6500AFB855 /* Inceptionv3.mlmodel */; };
+		78C6D46A2077E2FB007583C5 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 78C6D4692077E2FB007583C5 /* Inceptionv3.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		780EC886206E59AD00AFB855 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		780EC892206E5FB000AFB855 /* ItemHuntVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHuntVC.swift; sourceTree = "<group>"; };
 		780EC8A4206FE4EC00AFB855 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		780EC8AD20727F6500AFB855 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
+		78C6D4692077E2FB007583C5 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +105,7 @@
 		780EC8A6207253F500AFB855 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				780EC8AD20727F6500AFB855 /* Inceptionv3.mlmodel */,
+				78C6D4692077E2FB007583C5 /* Inceptionv3.mlmodel */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -137,7 +137,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Igor Eydman";
 				TargetAttributes = {
 					780EC876206E59AD00AFB855 = {
@@ -183,7 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				780EC8A5206FE4EC00AFB855 /* Item.swift in Sources */,
-				780EC8AE20727F6500AFB855 /* Inceptionv3.mlmodel in Sources */,
+				78C6D46A2077E2FB007583C5 /* Inceptionv3.mlmodel in Sources */,
 				780EC893206E5FB000AFB855 /* ItemHuntVC.swift in Sources */,
 				780EC87B206E59AD00AFB855 /* AppDelegate.swift in Sources */,
 			);
@@ -225,6 +225,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -232,6 +233,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -282,6 +284,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -289,6 +292,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

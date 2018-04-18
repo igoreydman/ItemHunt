@@ -15,21 +15,19 @@ class ItemHuntVC: UIViewController {
     @IBOutlet weak var cameraImage: UIImageView!
     @IBOutlet weak var classificationLabel: UILabel!
     @IBOutlet weak var nextBtnLabel: UIButton!
-    @IBOutlet weak var prevBtnLabel: UIButton!
+    @IBOutlet weak var randomBtnLabel: UIButton!
     @IBOutlet weak var findNextLabel: UILabel!
     
     let imagePicker = UIImagePickerController()
     var itemEmojis = [Item]()
     
     var currentIndex = 0
-    var nextItem = Int()
-    var previousItem = Int()
+    var nextIndex = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imagePicker.delegate = self
-        prevBtnLabel.isEnabled = false
         generateItems()
         let firstString = itemEmojis[currentIndex].emoji
         findNextLabel.text = "Find a \(firstString)"
@@ -43,15 +41,23 @@ class ItemHuntVC: UIViewController {
     }
     
     @IBAction func nextTapped(_ sender: Any) {
+        guard currentIndex != itemEmojis.count - 1 else {
+            currentIndex = 0
+            print("0 index: \(String(currentIndex))")
+            updateItemLabels()
+            return
+        }
+        
+        currentIndex += 1
+        print("+1 index: \(String(currentIndex))")
         updateItemLabels()
     }
     
-    @IBAction func prevTapped(_ sender: Any) {
-        currentIndex = previousItem
-        nextItem = Int(arc4random_uniform(UInt32(itemEmojis.count)))
-        prevBtnLabel.isEnabled = false
+    @IBAction func randomTapped(_ sender: Any) {
+        
+        currentIndex =  Int(arc4random_uniform(UInt32(itemEmojis.count)))
+        updateItemLabels()
     }
-    
 }
 
 // MARK - Item functions
@@ -73,47 +79,37 @@ extension ItemHuntVC {
     }
     
     func updateItemLabels() {
-        if itemEmojis.isEmpty == false {
-            DispatchQueue.main.async {
-                self.previousItem = self.currentIndex
-                print("Current index is: \(self.currentIndex)")
-            // can this be condensed into if let?
-                if self.currentIndex + 1 > self.itemEmojis.count {
-                    self.currentIndex = 0
-                    print("Current index is: \(self.currentIndex)")
-            } else {
-                    self.currentIndex += 1
-                    print("Current index is: \(self.currentIndex)")
-            }
-            
-                self.nextItem = Int(arc4random_uniform(UInt32(self.itemEmojis.count)))
-            }
+
+        if currentIndex >= itemEmojis.count - 1 {
+                nextIndex = 0
+        } else {
+            nextIndex = currentIndex + 1
         }
-        
+
         let currentText = itemEmojis[currentIndex].emoji
-        let nextText = itemEmojis[nextItem].emoji
-        
+        let nextText = itemEmojis[nextIndex].emoji
         findNextLabel.text = "Find a \(currentText)"
-        nextBtnLabel.titleLabel!.text = "\(nextText)"
+        randomBtnLabel.titleLabel!.text = "\(nextText)"
     }
     
     func checkModelResult(modelIdentifier: String) {
         // Search for item.name in model identifier
         var resultLowecased = modelIdentifier.lowercased()
         
-        // TODO - Train model to identify apples
+        // TODO - Fine tune model to identify apples
         if resultLowecased.range(of: "granny smith") != nil {
             resultLowecased = "apple"
             print("result: \(resultLowecased) \nEmoji: \(itemEmojis[currentIndex].emoji)")
         }
         
         if resultLowecased.range(of: itemEmojis[currentIndex].name) != nil {
-            DispatchQueue.main.async {
-                self.prevBtnLabel.isEnabled = true
-                let emojiName = self.itemEmojis[self.currentIndex].name.capitalized
-                self.classificationLabel.text = "\(emojiName) FOUND"
-                self.updateItemLabels()
+            DispatchQueue.main.async { [weak self] in
+                let emojiName = self?.itemEmojis[(self?.currentIndex)!].name.capitalized
+                self?.classificationLabel.text = "\(String(describing: emojiName!)) FOUND"
+                self?.updateItemLabels()
             }
+        } else {
+            classificationLabel.text = "Object not detected, please try again."
         }
     }
 }
@@ -137,7 +133,8 @@ extension ItemHuntVC {
             
             // Update UI
             DispatchQueue.main.async { [weak self] in
-                self?.classificationLabel.text = "\(Int(topResult.confidence * 100))% \(topResult.identifier) detected"
+                self?.classificationLabel.text = "\(topResult.identifier) detected"
+                NSLog("\(Int(topResult.confidence * 100))% \(topResult.identifier) detected")
                 
                 // Check if item is a match
                 self!.checkModelResult(modelIdentifier: topResult.identifier)
