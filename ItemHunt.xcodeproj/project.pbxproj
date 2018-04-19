@@ -14,6 +14,7 @@
 		780EC893206E5FB000AFB855 /* ItemHuntVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780EC892206E5FB000AFB855 /* ItemHuntVC.swift */; };
 		780EC8A5206FE4EC00AFB855 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780EC8A4206FE4EC00AFB855 /* Item.swift */; };
 		78C6D46A2077E2FB007583C5 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 78C6D4692077E2FB007583C5 /* Inceptionv3.mlmodel */; };
+		78D567852087E82100E19D54 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D567842087E82100E19D54 /* ShadowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		780EC892206E5FB000AFB855 /* ItemHuntVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHuntVC.swift; sourceTree = "<group>"; };
 		780EC8A4206FE4EC00AFB855 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		78C6D4692077E2FB007583C5 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
+		78D567842087E82100E19D54 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		780EC88D206E59C600AFB855 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				78D567842087E82100E19D54 /* ShadowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				78C6D46A2077E2FB007583C5 /* Inceptionv3.mlmodel in Sources */,
 				780EC893206E5FB000AFB855 /* ItemHuntVC.swift in Sources */,
 				780EC87B206E59AD00AFB855 /* AppDelegate.swift in Sources */,
+				78D567852087E82100E19D54 /* ShadowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

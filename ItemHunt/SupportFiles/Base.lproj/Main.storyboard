@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="78k-Xq-pGT">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="78k-Xq-pGT" customClass="ShadowView" customModule="ItemHunt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="374"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lVh-XP-WBB">
@@ -35,52 +35,99 @@
                                     <constraint firstItem="lVh-XP-WBB" firstAttribute="top" secondItem="78k-Xq-pGT" secondAttribute="top" id="qfV-eF-dEg"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FV9-aH-V2p">
-                                <rect key="frame" x="124" y="609" width="115" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Camera">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FV9-aH-V2p">
+                                <rect key="frame" x="152.5" y="570" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="Feh-ii-ZDv"/>
+                                    <constraint firstAttribute="width" constant="70" id="d87-nS-vSL"/>
+                                </constraints>
+                                <state key="normal" image="Camera">
                                     <color key="titleColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="cameraTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wwp-Id-xhL"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Classification" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Geg-fk-wfz">
-                                <rect key="frame" x="103" y="484" width="206" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the camera to start!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Geg-fk-wfz">
+                                <rect key="frame" x="27" y="465" width="321" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="S4U-JC-5gG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfi-iF-axe">
-                                <rect key="frame" x="313" y="609" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Next"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfi-iF-axe">
+                                <rect key="frame" x="278" y="553" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="IVp-Wm-VC7"/>
+                                    <constraint firstAttribute="height" constant="70" id="ouC-BV-9RS"/>
+                                </constraints>
+                                <state key="normal" title="Next" image="Next"/>
                                 <connections>
                                     <action selector="nextTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Mrn-eN-ech"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Find" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSa-D9-3TG">
-                                <rect key="frame" x="72" y="413" width="263" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qq1-kI-9zi">
-                                <rect key="frame" x="16" y="609" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Random"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GPD-wG-YsQ" customClass="ShadowView" customModule="ItemHunt" customModuleProvider="target">
+                                <rect key="frame" x="27" y="393" width="321" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Find" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSa-D9-3TG">
+                                        <rect key="frame" x="0.0" y="0.0" width="321" height="70"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
+                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="4Y4-Yz-PX1"/>
+                                    <constraint firstAttribute="bottom" secondItem="QSa-D9-3TG" secondAttribute="bottom" id="H5b-eF-DZg"/>
+                                    <constraint firstAttribute="trailing" secondItem="QSa-D9-3TG" secondAttribute="trailing" id="QZe-wI-eB8"/>
+                                    <constraint firstItem="QSa-D9-3TG" firstAttribute="top" secondItem="GPD-wG-YsQ" secondAttribute="top" id="ugc-e0-0Lw"/>
+                                    <constraint firstItem="QSa-D9-3TG" firstAttribute="leading" secondItem="GPD-wG-YsQ" secondAttribute="leading" id="xqX-hD-5nX"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="qCB-rb-E7T" appends="YES" id="WuG-gC-OdJ"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qq1-kI-9zi">
+                                <rect key="frame" x="27" y="553" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="ZHj-p5-24a"/>
+                                    <constraint firstAttribute="height" constant="70" id="x5H-tk-SQe"/>
+                                </constraints>
+                                <state key="normal" title="Random" image="Random"/>
                                 <connections>
                                     <action selector="randomTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nzN-eo-VPu"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🌭" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHq-Jf-jby">
+                                <rect key="frame" x="314" y="544" width="40" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="78k-Xq-pGT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1jW-8q-y6q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wfi-iF-axe" secondAttribute="trailing" constant="27" id="3aV-5e-v1G"/>
                             <constraint firstItem="78k-Xq-pGT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8Yy-vS-Vtf"/>
+                            <constraint firstItem="Qq1-kI-9zi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="27" id="Dui-d9-TeI"/>
+                            <constraint firstItem="GPD-wG-YsQ" firstAttribute="top" secondItem="lVh-XP-WBB" secondAttribute="bottom" constant="19" id="FdW-ta-eRJ"/>
+                            <constraint firstItem="wfi-iF-axe" firstAttribute="top" secondItem="XHq-Jf-jby" secondAttribute="bottom" constant="-33" id="KU1-5H-c7U"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Geg-fk-wfz" secondAttribute="trailing" constant="27" id="LY9-ts-b7h"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GPD-wG-YsQ" secondAttribute="trailing" constant="27" id="URo-9Z-mqt"/>
+                            <constraint firstItem="Geg-fk-wfz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="27" id="UYi-gV-Hzn"/>
+                            <constraint firstItem="GPD-wG-YsQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="27" id="VKV-iC-aef"/>
+                            <constraint firstItem="FV9-aH-V2p" firstAttribute="top" secondItem="Geg-fk-wfz" secondAttribute="bottom" constant="35" id="YSq-xM-ph2"/>
+                            <constraint firstItem="FV9-aH-V2p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Zxz-wh-ZEf"/>
                             <constraint firstItem="78k-Xq-pGT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="dQm-Pc-1hb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FV9-aH-V2p" secondAttribute="bottom" constant="27" id="osc-8x-rsH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qq1-kI-9zi" secondAttribute="bottom" constant="44" id="ryF-Mt-t7J"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wfi-iF-axe" secondAttribute="bottom" constant="44" id="wPe-Fl-l6L"/>
+                            <constraint firstItem="XHq-Jf-jby" firstAttribute="leading" secondItem="wfi-iF-axe" secondAttribute="trailing" constant="-34" id="zW9-le-oQ7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -88,13 +135,25 @@
                         <outlet property="cameraImage" destination="lVh-XP-WBB" id="QLf-WT-Quw"/>
                         <outlet property="classificationLabel" destination="Geg-fk-wfz" id="n2D-J7-l2U"/>
                         <outlet property="findNextLabel" destination="QSa-D9-3TG" id="nJg-Np-ECB"/>
+                        <outlet property="findView" destination="GPD-wG-YsQ" id="U3h-uA-eLR"/>
                         <outlet property="nextBtnLabel" destination="wfi-iF-axe" id="Dsf-y9-W7U"/>
+                        <outlet property="previewLabel" destination="XHq-Jf-jby" id="gJz-g4-Jdg"/>
                         <outlet property="randomBtnLabel" destination="Qq1-kI-9zi" id="ve7-MH-cUp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="qCB-rb-E7T">
+                    <connections>
+                        <action selector="findTapped:" destination="BYZ-38-t0r" id="dOH-5R-FvP"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="24.800000000000001" y="31.934032983508249"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Camera" width="70" height="70"/>
+        <image name="Next" width="78" height="78"/>
+        <image name="Random" width="78" height="78"/>
+    </resources>
 </document>

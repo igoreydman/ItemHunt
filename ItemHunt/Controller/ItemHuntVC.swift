@@ -15,8 +15,10 @@ class ItemHuntVC: UIViewController {
     @IBOutlet weak var cameraImage: UIImageView!
     @IBOutlet weak var classificationLabel: UILabel!
     @IBOutlet weak var nextBtnLabel: UIButton!
+    @IBOutlet weak var previewLabel: UILabel!
     @IBOutlet weak var randomBtnLabel: UIButton!
     @IBOutlet weak var findNextLabel: UILabel!
+    @IBOutlet weak var findView: ShadowView!
     
     let imagePicker = UIImagePickerController()
     var itemEmojis = [Item]()
@@ -31,7 +33,15 @@ class ItemHuntVC: UIViewController {
         generateItems()
         let firstString = itemEmojis[currentIndex].emoji
         findNextLabel.text = "Find a \(firstString)"
-        
+    }
+    
+    // Hide status bar
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    @IBAction func findTapped(_ sender: Any) {
+        findView.shake()
     }
     
     @IBAction func cameraTapped(_ sender: Any) {
@@ -43,13 +53,11 @@ class ItemHuntVC: UIViewController {
     @IBAction func nextTapped(_ sender: Any) {
         guard currentIndex != itemEmojis.count - 1 else {
             currentIndex = 0
-            print("0 index: \(String(currentIndex))")
             updateItemLabels()
             return
         }
         
         currentIndex += 1
-        print("+1 index: \(String(currentIndex))")
         updateItemLabels()
     }
     
@@ -74,7 +82,6 @@ extension ItemHuntVC {
             let newItem = Item(name: itemName, emoji: emoji)
             itemEmojis.append(newItem)
             itemEmojis = itemEmojis.sorted(by: {$0.name < $1.name})
-            print(itemEmojis[0].name)
         }
     }
     
@@ -88,8 +95,9 @@ extension ItemHuntVC {
 
         let currentText = itemEmojis[currentIndex].emoji
         let nextText = itemEmojis[nextIndex].emoji
-        findNextLabel.text = "Find a \(currentText)"
-        randomBtnLabel.titleLabel!.text = "\(nextText)"
+        findNextLabel.text = "Find a \(currentText)!"
+        previewLabel.text = "\(nextText)"
+        
     }
     
     func checkModelResult(modelIdentifier: String) {
@@ -99,7 +107,6 @@ extension ItemHuntVC {
         // TODO - Fine tune model to identify apples
         if resultLowecased.range(of: "granny smith") != nil {
             resultLowecased = "apple"
-            print("result: \(resultLowecased) \nEmoji: \(itemEmojis[currentIndex].emoji)")
         }
         
         if resultLowecased.range(of: itemEmojis[currentIndex].name) != nil {
